@@ -1,0 +1,9 @@
+#13 Salvando um Dataset
+#removendo um atribuduto(coluna) do data frame
+#detela/remove in place(ou seja, no proprio dataset, sem criar uma copia)
+del data['coluna sem nocao']
+del data['coluna a partir de lista']
+
+#para salvar o dataset em um arquivo csv, basta usar o método to_csv() do dataframe
+#usar o parametro: index=False para não salvar os índices do dataframe no arquivo csv
+data.to_csv('2004-2021-modificado.csv_preprocessado', index=False)
