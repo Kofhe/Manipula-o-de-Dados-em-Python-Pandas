@@ -1,0 +1,16 @@
+#12 Seleção de Colunas/Atributos
+data.head()
+
+#retornando a coluna/atributo 'ESTADO' 
+data['ESTADO']
+
+#ou
+data.ESTADO
+
+#o loc passa o operador : para selecionar todas as linhas, e depois passando o rótulo da coluna 'ESTADO' para selecionar apenas essa coluna
+#NOME_DA_COLUNA não pode possuir caracteres especiais, ou seja, sem acentos, sem hífen, etc.
+data.loc[:, 'ESTADO']
+
+#selecionando multiplas colunas
+#passar uma lista de rótulos de colunas para o método loc, ou seja, selecionar as colunas com rótulos 'ESTADO' e 'PRODUTO'
+data.loc[:, ['ESTADO', 'PRODUTO','REGIÃO']]
