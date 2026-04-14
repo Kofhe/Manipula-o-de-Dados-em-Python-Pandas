@@ -1,0 +1,42 @@
+#14 Filtragem (Parte 1)
+data = pd.read_csv('Estudos pandas/2004-2021-modificado.csv_preprocessado')
+data.head()
+
+#quais estados foram considerados nas aferições?
+#o unique() retorna os valores únicos de uma coluna
+data['ESTADO'].unique()
+
+#selecionando apenas os preços dos pontos de são paulo
+#Faz uma comparação elemento a elemento, retornando uma série de booleanos
+data['ESTADO'] == 'SAO PAULO''
+
+#salvando esa series de boleanos em uma variável
+selecao = data['ESTADO'] == 'SAO PAULO'
+
+data[selecao]
+
+#ou data.loc[selecao]
+data.loc[selecao]
+
+#15 Filtragem (Parte 2)
+#selecionar apenas os preços dos pontos de são paulo
+#query (pergunta), retorne para mim apenas os dados onde a coluna ESTADO seja igual a SAO PAULO, passar uma string com a condição
+data.query('ESTADO == "SAO PAULO"')
+
+#boa pratica é salvar o data frame filtrado em uma nova variável
+postos_sp = data.query('ESTADO == "SAO PAULO"')
+postos_sp.head()
+
+#resetando o index do data frame
+#os indices mantem o mesmo que o original mas caso queira resetar o index para ficar do 0 ao n-1, usar o reset_index()
+postos_sp.reset_index()
+
+#retirar os indices antigos, o drop drop=True joga fora os indices antigos
+postos_sp.reset_index(drop=True)
+
+#o implace=True faz a alteração no proprio data frame, sem precisar salvar em uma nova variável
+postos_sp.reset_index(drop=True, inplace=True)
+postos_sp
+
+#alternativa comum, retorna um copia dos dados filtrados com o index resetado
+data.query('ESTADO == "SAO PAULO"').reset_index(drop=True)
