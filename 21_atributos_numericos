@@ -1,0 +1,38 @@
+#21 Estatísticas Descritivas
+#carregar o novo dataset
+data_final = pd.read_csv('C:/Users/andre/Desktop/Estudos sozinha/Estudos pandas/preprocessado.csv')
+data_final
+
+#retorna outro dataframe cuja cada linha possui uma medida, atributos numericos
+data_final.describe()
+
+#por coluna
+data_final.describe()['MARGEM MÉDIA REVENDA']
+
+stats = data_final.describe()
+stats
+#acessa apenas o informações especificas
+stats.loc[['min','max'],'MARGEM MÉDIA REVENDA']
+
+#describe podem ser computadas individualmente
+data_final.head()
+----------------------------------------------------------
+#qual é o menor preço mínimo de renveda?
+data_final['PREÇO MÍNIMO REVENDA'].min()
+----------------------------------------------------------
+#qual é a média e desvio padrão dos preços mínimos de renveda?
+mean = data_final['PREÇO MÍNIMO REVENDA'].mean()
+std = data_final['PREÇO MÍNIMO REVENDA'].std()
+
+print(f'A média dos preços mínimos de renveda é {mean:.2f} +- {std}') #duas casas decimais :.2f
+----------------------------------------------------------
+#quais são os estados considerados?
+data_final['ESTADO'].unique()
+
+#valores ordenados
+sorted(data_final['ESTADO'].unique())
+----------------------------------------------------------
+#quantos registros (aferições) cada estado possui?
+data_final['ESTADO'].value_counts() #retorna em ordem decrescente, a quantidade de registros/linhas para cada estado
+#or
+data_final['ESTADO'].value_counts().to_frame #converte uma series para um dataframe
